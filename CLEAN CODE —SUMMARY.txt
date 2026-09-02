@@ -1,0 +1,113 @@
+CLEAN CODE —SUMMARY
+Based on Clean Code by Robert C. Martin (Uncle Bob)
+This summary covers Chapters 2, 3, 4, and 6. The examples are intentionally simple to make the main principles easy to understand and apply.
+Chapter 2 — Meaningful Names
+Use names that clearly explain what a variable, function, or class represents. Good names make code easier to read and reduce the need for comments.
+Bad example
+let d = 10;
+let x = 5;
+The reader has to guess what d and x mean.
+Better example
+let days = 10;
+let students = 5;
+The meaning is immediately clear.
+Clear function names
+function calculateTotal(price, quantity) {
+    return price * quantity;
+}
+A name such as calculateTotal() tells the reader what the function does.
+Key lesson
+Choose names that reveal the intention of the code.
+Chapter 3 — Functions
+Functions should be small, focused, and easy to understand. A function should normally have one clear responsibility.
+Bad example
+function processStudent(student) {
+    // check student
+    // calculate grade
+    // save student
+    // send email
+}
+This function is doing several different jobs.
+Better example
+function processStudent(student) {
+    validateStudent(student);
+    calculateGrade(student);
+    saveStudent(student);
+}
+The work is divided into smaller functions. This makes the code easier to test and change.
+Avoid too many parameters
+createUser("Ali", "ali@email.com", 25, "Dakar");
+
+// Better
+createUser(user);
+Key lesson
+Keep functions small, focused, predictable, and easy to understand.
+Chapter 4 — Comments
+Comments can be useful, but they should not compensate for unclear code. First try to make the code itself clear.
+Unnecessary comment
+// Add 1 to count
+count++;
+The comment only repeats what the code already says.
+Use clear names instead
+if (user.isActive) {
+    // ...
+}
+A clear name can remove the need for a comment such as “check if the user is active.”
+When a comment can help
+// Keep this check for compatibility with the old payment system.
+if (useLegacyRules) {
+    // ...
+}
+Here the comment explains why the code exists, which may not be obvious from the code.
+Key lesson
+Before adding a comment, ask: “Can I make the code clearer instead?”
+Chapter 6 — Objects and Data Structures
+This chapter explains how to organize data and behavior. Choose an appropriate abstraction and avoid exposing unnecessary implementation details.
+Simple data structure
+const user = {
+    name: "Ali",
+    age: 20
+};
+This object mainly stores data.
+Object with behavior
+class BankAccount {
+    constructor(balance) {
+        this.balance = balance;
+    }
+
+    withdraw(amount) {
+        this.balance -= amount;
+    }
+}
+const account = new BankAccount(500);
+account.withdraw(100);
+The object provides a clear behavior instead of requiring other code to change its internal data directly.
+Encapsulation
+// Direct manipulation
+account.balance = account.balance - 100;
+
+// Better
+account.withdraw(100);
+Encapsulation helps keep rules and data together and makes the implementation easier to change.
+Key lesson
+Use objects and data structures deliberately, hide unnecessary details, and expose clear behavior.
+Quick Review
+Chapter	Main idea	Simple rule
+2 — Meaningful Names	Clear names	Make the purpose obvious.
+3 — Functions	Focused functions	One clear responsibility.
+4 — Comments	Useful comments	Make code clear before commenting.
+6 — Objects & Data Structures	Good organization	Hide unnecessary details.
+10 Rules to Remember
+1. Use names that reveal intent.
+2. Avoid unclear abbreviations.
+3. Use consistent vocabulary.
+4. Keep functions small.
+5. Give each function a clear responsibility.
+6. Avoid too many parameters.
+7. Avoid unexpected side effects.
+8. Prefer clear code over unnecessary comments.
+9. Use comments mainly for important reasons or decisions.
+10. Use objects and abstractions to keep code organized and maintainable.
+Final Takeaway
+Clean Code is about making software easy to read, understand, test, and change. Meaningful names, small functions, useful comments, and good object design work together to make code easier to maintain.
+
